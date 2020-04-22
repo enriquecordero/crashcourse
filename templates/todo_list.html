@@ -1,0 +1,42 @@
+
+{% extends 'base.html'%}
+
+
+{% block content %}
+
+
+    {% if request.user.is.authenticated %}
+
+         hello {{ request.user.username }}
+
+    {% else %}
+
+        hello Anonymous user 
+
+    {% endif %}
+
+    <hr>
+    <br>
+
+
+    <a href="{% url 'todo_create' %}">Create a todo</a>
+
+
+    <div class="col-4 offset-4"> 
+    {% for todo in todos %}
+
+    <div class="card mt-3">
+        <div class="card-header">
+            <a href="{% url 'todo_detail' todo.id %}"> <h4> {{ todo.name }}</h4> </a> 
+         </div>
+
+         <div class="card-body">
+            <p> it's due {{ todo.due_date }}   </p>
+         </div>
+    
+    
+    </div>
+
+    {% endfor %}
+</div>
+    {% endblock content  %}

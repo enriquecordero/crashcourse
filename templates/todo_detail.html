@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>To do</h1>
+
+
+    {% if request.user.is.authenticated %}
+
+         hello {{ request.user.username }}
+
+    {% else %}
+
+        hello Anonymous user 
+
+    {% endif %}
+    <hr>
+    <br>
+
+
+     THe todo name is : {{ todo.name }}
+     
+     THe due date is : {{ todo.due_date }}   
+
+     <a href="{% url 'todo_update' todo.id %}">Update a todo</a>
+     <a href="{% url 'todo_delete' todo.id %}">Delete a todo</a>
+
+</body>
+</html>
